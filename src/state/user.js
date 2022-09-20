@@ -7,7 +7,7 @@ export const sendRegisterRequest = createAsyncThunk("register", ({email, passwor
         password: password.value,
         name: name.value,
         lastname: lastname.value,
-      })
+      }, { withCredentials: true, credentials: 'include' })
       .then(res => res.data)
 })
 
@@ -17,18 +17,18 @@ export const sendLoginRequest = createAsyncThunk("login", ({email, password}) =>
         password: password.value,
       })
       .then(() => {
-        return axios.get("/api/users/me")
+        return axios.get("/api/users/me", { withCredentials: true, credentials: 'include' })
             .then(res => res.data)
       })
 })
 
 export const checkLogin = createAsyncThunk("check", () => {
-    return axios.get("/api/users/me")
+    return axios.get("/api/users/me", { withCredentials: true, credentials: 'include' })
       .then(res => res.data)
 })
 
 export const logOut = createAsyncThunk("LOG_OUT", () => {
-    return axios.post("/api/users/logout")
+    return axios.post("/api/users/logout", { withCredentials: true, credentials: 'include' })
       .then(res => res.data)
 })
 
@@ -36,42 +36,42 @@ export const updateProfile = createAsyncThunk("UPDATE_PROFILE", ({name,lastname}
     return axios.put("/api/users/profile", {
         name: name.value,
         lastname: lastname.value,
-    })
+    }, { withCredentials: true, credentials: 'include' })
       .then(res => res.data)
 })
 
 export const updateProfileName = createAsyncThunk("UPDATE_PROFILE", (lastname) => {
     return axios.put("/api/users/profile", {
         lastname: lastname.value,
-    })
+    }, { withCredentials: true, credentials: 'include' })
       .then(res => res.data)
 })
 
 export const updateProfileLastname = createAsyncThunk("UPDATE_PROFILE", (name) => {
     return axios.put("/api/users/profile", {
         name: name.value,
-    })
+    }, { withCredentials: true, credentials: 'include' })
       .then(res => res.data)
 })
 
 export const updateProfilePicture = createAsyncThunk("UPDATE_PROFILE_PICTURE", (pic) => {
     return axios.put("/api/users/profile", {
         pic: pic
-    })
+    }, { withCredentials: true, credentials: 'include' })
       .then(res => res.data)
 })
 
 export const changePassword = createAsyncThunk("CHANGE_PASSWORD", ({password}) => {
     return axios.put("/api/users/changePassword", {
         password: password.value,
-    })
+    }, { withCredentials: true, credentials: 'include' })
       .then(res => res.data)
 })
 
 export const getAllUsers = createAsyncThunk("GET_USERS", (setUsers) => {
     return axios.get("/api/users/")
       .then(res => setUsers(res.data))
-})
+}, { withCredentials: true, credentials: 'include' })
 
 
 const usersReducer = createReducer(
