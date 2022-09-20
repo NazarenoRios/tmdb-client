@@ -2,7 +2,7 @@ import { createAsyncThunk, createReducer } from "@reduxjs/toolkit";
 import axios from "axios";
 
 export const sendRegisterRequest = createAsyncThunk("register", ({email, password, name, lastname}) => {
-    return axios.post("/api/users/register", {
+    return axios.post("https://tmdb-api.onrender.com/api/users/register", {
         email: email.value,
         password: password.value,
         name: name.value,
@@ -12,7 +12,7 @@ export const sendRegisterRequest = createAsyncThunk("register", ({email, passwor
 })
 
 export const sendLoginRequest = createAsyncThunk("login", ({email, password}) => {
-    return axios.post("/api/users/login", {
+    return axios.post("https://tmdb-api.onrender.com/api/users/login", {
         email: email.value,
         password: password.value,
       })
@@ -23,17 +23,17 @@ export const sendLoginRequest = createAsyncThunk("login", ({email, password}) =>
 })
 
 export const checkLogin = createAsyncThunk("check", () => {
-    return axios.get("/api/users/me", { withCredentials: true, credentials: 'include' })
+    return axios.get("https://tmdb-api.onrender.com/api/users/me", { withCredentials: true, credentials: 'include' })
       .then(res => res.data)
 })
 
 export const logOut = createAsyncThunk("LOG_OUT", () => {
-    return axios.post("/api/users/logout", { withCredentials: true, credentials: 'include' })
+    return axios.post("https://tmdb-api.onrender.com/api/users/logout", { withCredentials: true, credentials: 'include' })
       .then(res => res.data)
 })
 
 export const updateProfile = createAsyncThunk("UPDATE_PROFILE", ({name,lastname}) => {
-    return axios.put("/api/users/profile", {
+    return axios.put("https://tmdb-api.onrender.com/api/users/profile", {
         name: name.value,
         lastname: lastname.value,
     }, { withCredentials: true, credentials: 'include' })
@@ -41,35 +41,35 @@ export const updateProfile = createAsyncThunk("UPDATE_PROFILE", ({name,lastname}
 })
 
 export const updateProfileName = createAsyncThunk("UPDATE_PROFILE", (lastname) => {
-    return axios.put("/api/users/profile", {
+    return axios.put("https://tmdb-api.onrender.com/api/users/profile", {
         lastname: lastname.value,
     }, { withCredentials: true, credentials: 'include' })
       .then(res => res.data)
 })
 
 export const updateProfileLastname = createAsyncThunk("UPDATE_PROFILE", (name) => {
-    return axios.put("/api/users/profile", {
+    return axios.put("https://tmdb-api.onrender.com/api/users/profile", {
         name: name.value,
     }, { withCredentials: true, credentials: 'include' })
       .then(res => res.data)
 })
 
 export const updateProfilePicture = createAsyncThunk("UPDATE_PROFILE_PICTURE", (pic) => {
-    return axios.put("/api/users/profile", {
+    return axios.put("https://tmdb-api.onrender.com/api/users/profile", {
         pic: pic
     }, { withCredentials: true, credentials: 'include' })
       .then(res => res.data)
 })
 
 export const changePassword = createAsyncThunk("CHANGE_PASSWORD", ({password}) => {
-    return axios.put("/api/users/changePassword", {
+    return axios.put("https://tmdb-api.onrender.com/api/users/changePassword", {
         password: password.value,
     }, { withCredentials: true, credentials: 'include' })
       .then(res => res.data)
 })
 
 export const getAllUsers = createAsyncThunk("GET_USERS", (setUsers) => {
-    return axios.get("/api/users/")
+    return axios.get("https://tmdb-api.onrender.com/api/users/")
       .then(res => setUsers(res.data))
 }, { withCredentials: true, credentials: 'include' })
 
