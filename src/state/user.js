@@ -15,7 +15,7 @@ export const sendLoginRequest = createAsyncThunk("login", ({email, password}) =>
     return axios.post("https://butterflix.onrender.com/api/users/login", {
         email: email.value,
         password: password.value,
-      })
+      }, { withCredentials: true, credentials: 'include' })
       .then(() => {
         return axios.get("/api/users/me", { withCredentials: true, credentials: 'include' })
             .then(res => res.data)
