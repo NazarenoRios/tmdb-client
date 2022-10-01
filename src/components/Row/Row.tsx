@@ -30,7 +30,7 @@ function Row({ title, fetchUrl }) {
 
   useEffect(() => {
     async function fetchData() {
-      const request = await axios.get(`${get_url}${fetchUrl}`);
+      const request = await axios.get(`${get_url}${fetchUrl}`, { withCredentials: false });
       setMovies(request.data.results);
       return request;
     }
