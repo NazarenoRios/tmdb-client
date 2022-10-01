@@ -27,6 +27,7 @@ import {
   Icon,
   Image,
 } from '@chakra-ui/react';
+import e from "express";
 
 
 export default function LoginForm() {
@@ -50,7 +51,8 @@ export default function LoginForm() {
   const [navState,setNavState] = useState(true);
 
 
-  const changeState = () => {
+  const changeState = (e) => {
+    e.preventDefault()
     setLoading(true);
     setNavState(false)
     setTimeout(() => {
@@ -144,7 +146,7 @@ export default function LoginForm() {
             w={'full'}
             bgGradient="linear(to-r, blue.400,pink.400)"
             color={'white'}
-            onClick={() => changeState()}
+            onClick={changeState}
             _hover={{
               bgGradient: 'linear(to-r, red.400,pink.400)',
               boxShadow: 'xl',
