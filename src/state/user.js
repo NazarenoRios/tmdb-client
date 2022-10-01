@@ -1,6 +1,11 @@
 import { createAsyncThunk, createReducer } from "@reduxjs/toolkit";
 import axios from "axios";
 
+// const instance = axios.create({
+//     withCredentials: true,
+//     baseURL: BASE_URL
+//  })
+
 export const sendRegisterRequest = createAsyncThunk("register", ({email, password, name, lastname}) => {
     return axios.post("https://butterflix.onrender.com/api/users/register", {
         email: email.value,
@@ -17,7 +22,7 @@ export const sendLoginRequest = createAsyncThunk("login", ({email, password}) =>
         password: password.value,
       }, { withCredentials: true, credentials: 'include' })
       .then(() => {
-        return axios.get("/api/users/me", { withCredentials: true, credentials: 'include' })
+        return axios.get("https://butterflix.onrender.com/api/users/me", { withCredentials: true, credentials: 'include' })
             .then(res => res.data)
       })
 })
