@@ -4,27 +4,27 @@ import axios from "axios";
 
 
 export const CategoryDisneyRequest = createAsyncThunk("DISNEY_CATEGORY", ({get_url, setMovies}) => {
-    return axios.get(`${get_url}${requests.fetchDisney}`, { withCredentials: true, credentials: 'include' })
+    return axios.get(`${get_url}${requests.fetchDisney}`, { withCredentials: false })
       .then(res => setMovies(res.data.items))
 })
 
 export const CategoryMarvelRequest = createAsyncThunk("MARVEL_CATEGORY", ({get_url, setMovies}) => {
-    return axios.get(`${get_url}${requests.fetchMarvel}`, { withCredentials: true, credentials: 'include' })
+    return axios.get(`${get_url}${requests.fetchMarvel}`, { withCredentials: false })
       .then(res => setMovies(res.data.items))
 })
 
 export const CategoryNatGeo = createAsyncThunk("NATGEO_CATEGORY", ({get_url, setMovies}) => {
-  return axios.get(`${get_url}${requests.fetchNatGeo}`, { withCredentials: true, credentials: 'include' })
+  return axios.get(`${get_url}${requests.fetchNatGeo}`, { withCredentials: false })
     .then(res => setMovies(res.data.items))
 })
 
 export const CategoryPixarRequest = createAsyncThunk("PIXAR_CATEGORY", ({get_url, setMovies}) => {
-    return axios.get(`${get_url}${requests.fetchPixar}`, { withCredentials: true, credentials: 'include' })
+    return axios.get(`${get_url}${requests.fetchPixar}`, { withCredentials: false })
       .then(res => setMovies(res.data.items))
 })
 
 export const CategoryStarWarsRequest = createAsyncThunk("STARWARS_CATEGORY", ({get_url, setMovies}) => {
-    return axios.get(`${get_url}${requests.fetchStarWars}`, { withCredentials: true, credentials: 'include' })
+    return axios.get(`${get_url}${requests.fetchStarWars}`, { withCredentials: false })
       .then(res => setMovies(res.data.items))
 })
 

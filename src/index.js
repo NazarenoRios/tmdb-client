@@ -25,7 +25,6 @@ const root = createRoot(container);
 
 //axios config
 axios.defaults.withCredentials = true;
-axios.defaults.credentials = 'include'
 
 root.render(
   <StrictMode>
