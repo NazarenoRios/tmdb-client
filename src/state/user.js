@@ -16,10 +16,8 @@ export const sendLoginRequest = createAsyncThunk("login", ({email, password}) =>
         email: email.value,
         password: password.value,
       }, { withCredentials: true, credentials: 'include' })
-      .then(() => {
-        return axios.get("/api/users/me", { withCredentials: true, credentials: 'include' })
-            .then(res => res.data)
-      })
+      
+    
 })
 
 export const checkLogin = createAsyncThunk("check", () => {
