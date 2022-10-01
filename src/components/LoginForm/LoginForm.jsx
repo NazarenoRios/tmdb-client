@@ -27,7 +27,6 @@ import {
   Icon,
   Image,
 } from '@chakra-ui/react';
-import e from "express";
 
 
 export default function LoginForm() {
