@@ -40,7 +40,7 @@ export default function LoginForm() {
 
   const sucessGoogleResponse = (tokenResponse) => {
     axios
-      .put("https://butterflix.onrender.com/api/users/googlelogin", { credential: tokenResponse.credential })
+      .put("https://butterflix.onrender.com/api/users/googlelogin", { withCredentials: true ,credential: tokenResponse.credential })
       .then(() => navigate("/home"));
   };
 
@@ -52,15 +52,10 @@ export default function LoginForm() {
 
   const changeState = (e) => {
     e.preventDefault()
-    setLoading(true);
-    setNavState(false)
-    setTimeout(() => {
-      setToggleMute(!toggleMute);
-    },0)
-    setTimeout(() => {
-      dispatch(sendLoginRequest({ email, password }));
-      setLoading(false)
-    }, 6000)
+    axios.post("https://butterflix.onrender.com/api/users/login", {
+        email: email.value,
+        password: password.value,
+      }, { withCredentials: true, credentials: 'include' })
   }
 
   useEffect(() => {
