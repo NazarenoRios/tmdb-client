@@ -40,7 +40,7 @@ export default function LoginForm() {
 
   const sucessGoogleResponse = (tokenResponse) => {
     axios
-      .put("/api/users/googlelogin", { credential: tokenResponse.credential })
+      .put("https://butterflix.onrender.com/api/users/googlelogin", { credential: tokenResponse.credential })
       .then(() => navigate("/home"));
   };
 

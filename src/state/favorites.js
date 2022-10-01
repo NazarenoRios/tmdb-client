@@ -17,7 +17,7 @@ export const addToFavorites = createAsyncThunk("ADD_TO_FAVORITES",(movie, thunkA
   
   if (!users.id) throw new Error("You need to be logged in");
   return axios
-    .put(`https://tmdb-api.onrender.com/api/movies/addFavorite?userId=${users.id}&code=${movie.id}&title=${movie.title}&poster_path=${movie.poster_path}&vote_average=${movie.vote_average}&release_date=${movie.release_date}`,{code: movie.id, title: movie.title, poster_path: movie.poster_path, vote_average: movie.vote_average, release_date: movie.release_date}, { withCredentials: true, credentials: 'include' })
+    .put(`https://butterflix.onrender.com/api/movies/addFavorite?userId=${users.id}&code=${movie.id}&title=${movie.title}&poster_path=${movie.poster_path}&vote_average=${movie.vote_average}&release_date=${movie.release_date}`,{code: movie.id, title: movie.title, poster_path: movie.poster_path, vote_average: movie.vote_average, release_date: movie.release_date}, { withCredentials: true, credentials: 'include' })
     .then((res) => res.data);
 }
 );
@@ -26,7 +26,7 @@ export const removeFromFavorites = createAsyncThunk("REMOVE_FAVORITE",(movie, th
   const { users } = thunkAPI.getState();
   if (!users.id) throw new Error("You need to be logged in");
   return axios
-    .delete(`https://tmdb-api.onrender.com/api/movies/removeFavorite?userId=${users.id}&code=${movie.id}`, { withCredentials: true, credentials: 'include' })
+    .delete(`https://butterflix.onrender.com/api/movies/removeFavorite?userId=${users.id}&code=${movie.id}`, { withCredentials: true, credentials: 'include' })
     .then((res) => res.data);
 }
 );
@@ -35,14 +35,14 @@ export const Favorites = createAsyncThunk("FAVORITES",(setMovies, thunkAPI) => {
   const { users } = thunkAPI.getState();
   if (!users.id) throw new Error("You need to be logged in");
   return axios
-    .get(`https://tmdb-api.onrender.com/api/movies/favorites?userId=${users.id}`, { withCredentials: true, credentials: 'include' })
+    .get(`https://butterflix.onrender.com/api/movies/favorites?userId=${users.id}`, { withCredentials: true, credentials: 'include' })
     .then((res) => setMovies(res.data));
 }
 );
 
 export const UserFavorites = createAsyncThunk("USER_FAVORITES",({id, setMovies}) => {
   return axios
-    .get(`https://tmdb-api.onrender.com/api/movies/favorites?userId=${id}`, { withCredentials: true, credentials: 'include' })
+    .get(`https://butterflix.onrender.com/api/movies/favorites?userId=${id}`, { withCredentials: true, credentials: 'include' })
     .then((res) => setMovies(res.data));
 }
 );
@@ -51,7 +51,7 @@ export const FavoritesRow = createAsyncThunk("FAVORITES_ROW",(setFavorites, thun
   const { users } = thunkAPI.getState();
   if (!users.id) throw new Error("You need to be logged in");
   return axios
-    .get(`https://tmdb-api.onrender.com/api/movies/favorites?userId=${users.id}`, { withCredentials: true, credentials: 'include' })
+    .get(`https://butterflix.onrender.com/api/movies/favorites?userId=${users.id}`, { withCredentials: true, credentials: 'include' })
     .then((res) => setFavorites(res.data));
 }
 );
