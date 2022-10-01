@@ -16,6 +16,7 @@ import { ChakraProvider } from "@chakra-ui/react";
 import { theme } from "./utils/chakraui";
 
 //axios
+import axios from 'axios';
 
 //render
 import { createRoot } from "react-dom/client";
@@ -23,7 +24,8 @@ const container = document.getElementById("root");
 const root = createRoot(container);
 
 //axios config
-
+axios.defaults.withCredentials = true;
+axios.defaults.credentials = 'include'
 
 root.render(
   <StrictMode>

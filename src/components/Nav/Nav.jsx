@@ -17,7 +17,6 @@ import { logOut } from "../../state/user";
 
 import { success } from "../../utils/logs";
 import { getUser } from "../../state/updatedUser";
-import axios from "axios";
 
 
 function Nav() {
@@ -30,8 +29,7 @@ function Nav() {
   const dispatch = useDispatch();
 
   const handleLogout = function () {
-    axios.post("https://butterflix.onrender.com/api/users/logout", { withCredentials: true, credentials: 'include' })
-      .then(res => res.data)
+    dispatch(logOut())
     success("logged out");
     navigate("/");
   };
