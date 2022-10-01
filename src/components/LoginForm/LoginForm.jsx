@@ -52,10 +52,15 @@ export default function LoginForm() {
 
   const changeState = (e) => {
     e.preventDefault()
-    axios.post("https://butterflix.onrender.com/api/users/login", {
-        email: email.value,
-        password: password.value,
-      }, { withCredentials: true, credentials: 'include' })
+    setLoading(true);
+    setNavState(false)
+    setTimeout(() => {
+      setToggleMute(!toggleMute);
+    },0)
+    setTimeout(() => {
+      dispatch(sendLoginRequest({ email, password }));
+      setLoading(false)
+    }, 6000)
   }
 
   useEffect(() => {
